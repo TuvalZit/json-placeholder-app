@@ -54,7 +54,7 @@ const PostBar = ({
               }}
               sx={{
                 position: "absolute",
-                right: "8.5rem",
+                right: "5rem",
                 transform: "rotate(180deg)",
                 width: "2.5rem",
                 height: "2.5rem",

@@ -1,4 +1,5 @@
 import { Flex, Image, Text, Link } from "theme-ui";
+import logo_white from "../../resources/images/logo_white.svg";
 const Footer = () => {
   return (
     <Flex
@@ -8,10 +9,12 @@ const Footer = () => {
         height: "8.188rem",
         alignItems: "center",
         px: "7rem",
-        justifyContent: "space-between",
+        display: "grid",
+        gridTemplateColumns: "0.4fr 0.2fr 0.4fr",
+        justifyContent: "center",
       }}
     >
-      <Flex id="Footer-Container">
+      <Flex id="Left-big Footer-Container" sx={{}}>
         <Flex
           id="Left-Side-Footer-Container"
           sx={{
@@ -43,7 +46,7 @@ const Footer = () => {
                 color: "#48C0B6",
               }}
             >
-              +123-4567-89
+              +49-163-555-7327
             </Text>
           </Flex>
         </Flex>
@@ -72,25 +75,36 @@ const Footer = () => {
               color: "#48C0B6",
             }}
           >
-            www.jsonplaceholder.typicode.com
+            www.mindbill.com
           </Text>
         </Flex>
       </Flex>
-
-      <Link
-        href="www.google.com"
-        sx={{
-          textDecoration: "underline",
-          textAlign: "left",
-          font: "normal normal 300 20px/24px Roboto",
-          letterSpacing: "0px",
-          color: "#48C0B6",
-          opacity: 1,
-          mt: "38px",
-        }}
-      >
-        Terms Of Use
-      </Link>
+      <Flex sx={{}}>
+        <Image
+          sx={{
+            width: ["5rem", "5rem", "9.375rem"],
+            height: ["3rem", "3rem", "3rem"],
+          }}
+          src={logo_white}
+          mr={["default", "2rem", "3rem"]}
+        />
+      </Flex>
+      <Flex sx={{}}>
+        <Link
+          href="/www.google.com"
+          sx={{
+            textDecoration: "underline",
+            textAlign: "left",
+            font: "normal normal 300 20px/24px Roboto",
+            letterSpacing: "0px",
+            color: "#48C0B6",
+            opacity: 1,
+            mt: "38px",
+          }}
+        >
+          Terms Of Use
+        </Link>
+      </Flex>
     </Flex>
   );
 };

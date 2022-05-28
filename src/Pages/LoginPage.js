@@ -10,7 +10,7 @@ import { SelfcareIcon } from "../Components/Icon";
 
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
+  const [id, setID] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userArray, loading, error, userID } = useSelector(
@@ -18,7 +18,7 @@ const LoginPage = () => {
   ); //user the name of the reducer
   const isValidUser = () => {
     userArray.map((user) => {
-      if (user.username === userName && user.email === email) {
+      if (user.username === userName && user.id === id) {
         dispatch(setUserID(user.id));
         console.log("Valid User Name");
         navigate("/Posts");
@@ -110,13 +110,13 @@ const LoginPage = () => {
             fontWeight: "bold",
           }}
         >
-          <Text>Email</Text>
+          <Text>ID</Text>
           <Input
             onChange={(text) => {
-              setEmail(text.target.value);
+              setID(parseInt(text.target.value));
             }}
-            placeholder="Enter Email"
-            value={email}
+            placeholder="Enter ID"
+            value={id}
           />
         </Flex>
         <Flex sx={{ justifyContent: "center" }}>

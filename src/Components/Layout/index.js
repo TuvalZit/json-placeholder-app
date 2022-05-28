@@ -5,32 +5,37 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../Redux/Slices/userSlice";
+import { getUsers, setCurrentUserName } from "../../Redux/Slices/userSlice";
 const Layout = ({ children }) => {
-  const { userArray, userID, loading, error } = useSelector(
+  const { userArray, userID, currentUserName, loading, error } = useSelector(
     (state) => state.user
   );
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   useEffect(() => {
-    if (userArray != null) {
-      const currentUsername = userArray[userID - 1].name;
-      const userNameSplitted = currentUsername.substring(
-        0,
-        currentUsername.indexOf(" ")
-      );
+    if (userArray) {
+      const userName = userArray[userID - 1].name;
+      const userNameSplitted = userName.substring(0, userName.indexOf(" "));
       setUsername(userNameSplitted);
+      setCurrentUserName(userNameSplitted);
+      localStorage.setItem("CurrentUserName", userNameSplitted);
     } else {
+      console.log("else!!!!!");
       dispatch(getUsers);
     }
   }, [dispatch, userArray, userID]);
 
   return (
-    <Flex sx={{ flexDirection: "column" }}>
+    <Flex
+      sx={{
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
       <Header />
       <Flex
+        id="Welcome-Text-Container"
         sx={{
-          alignItems: "center",
           my: "1.5rem",
           ml: "7rem",
         }}
@@ -45,21 +50,15 @@ const Layout = ({ children }) => {
             fontWeight: "bold",
           }}
         >
-          Welcome {username}!
+          Welcome {currentUserName}!
         </Text>
       </Flex>
-      <NavBar
-        sx={{
-          my: "0.906rem",
-        }}
-      />
+      <NavBar />
       <Flex
         px="7rem"
         sx={{
           flexDirection: "column",
-          minHeight: "25.95rem",
-          my: "5rem",
-          justifyContent: "flex-start",
+          my: "auto",
           py: "3rem",
         }}
       >

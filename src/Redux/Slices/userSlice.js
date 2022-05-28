@@ -50,6 +50,10 @@ const UserSlice = createSlice({
   name: "user",
   initialState: {
     userArray: null,
+    currentUserName:
+      localStorage.getItem("CurrentUserName") === undefined
+        ? ""
+        : localStorage.getItem("CurrentUserName"),
     loading: false,
     error: null,
     postsArray: null,
@@ -65,6 +69,10 @@ const UserSlice = createSlice({
     setUserID: (state, action) => {
       state.userID = action.payload;
       localStorage.setItem("userID", action.payload);
+    },
+    setCurrentUserName: (state, action) => {
+      state.userID = action.payload;
+      localStorage.setItem("CurrentUserName", action.payload);
     },
   },
   extraReducers: {
@@ -96,5 +104,5 @@ const UserSlice = createSlice({
     },
   },
 });
-export const { setUserID } = UserSlice.actions;
+export const { setUserID, setCurrentUserName } = UserSlice.actions;
 export default UserSlice.reducer;

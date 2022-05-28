@@ -5,7 +5,6 @@ import ToDoView from "../Components/ToDoGrid/ToDoView.js";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getToDos } from "../Redux/Slices/todoSlice.js";
-import { SelfcareIcon } from "../Components/Icon";
 function ToDoPage() {
   const { userID } = useSelector((state) => state.user);
   const { todosArray } = useSelector((state) => state.todo);

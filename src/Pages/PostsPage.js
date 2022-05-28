@@ -73,7 +73,7 @@ const PostsPage = () => {
   };
   //======================================================================================
   return (
-    <Layout>
+    <Layout sx={{}}>
       <Flex
         id="Total-Posts-search-container"
         sx={{

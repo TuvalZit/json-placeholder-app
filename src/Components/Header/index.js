@@ -1,4 +1,5 @@
 import { Flex, Text, useThemeUI } from "theme-ui";
+import eastlink_logo from "../../resources/images/eastlink_logo.svg";
 import headerImage from "../../resources/images/header-background.png";
 import { useNavigate } from "react-router-dom";
 import { SelfcareIcon } from "../Icon";
